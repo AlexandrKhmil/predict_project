@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+//import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -12,11 +13,15 @@ import Header from './Header/'
 class App extends Component {
 	render() {
 		return (
-			<BrowserRouter>
-				<Header />
-				<Route exact path="/" component={Home} />
-				<Route path="/article" component={Article} />
-			</BrowserRouter> 
+			<Router>
+				<>
+					<Header />
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route exact path="/article" component={Article} />
+					</Switch>
+				</>
+			</Router> 
 		)
 	}
 }
