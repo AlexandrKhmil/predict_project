@@ -18,8 +18,9 @@ from django.urls import path, include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^(?:.*)/?', include('frontend.urls')),
-    #re_path(r'^(?:.*)/?$', include('frontend.urls')), # here are warnings 
-    #path('', include('frontend.urls')),
     path('', include("accounts.urls")),
+    #path('', include('frontend.urls')),
+    re_path(r'^(?:.*)/?', include('frontend.urls')),
+    #re_path(r'^(?:.*)/?$', include('frontend.urls')), # here are warnings  
+    
 ]
