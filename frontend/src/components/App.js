@@ -9,6 +9,7 @@ import store from "../store"
 import Home from './Home/'
 import Article from './Article/'
 import Login from './accounts/Login/'
+import Register from './accounts/Register/'
 
 import Header from './Header/'
 
@@ -24,6 +25,7 @@ class App extends Component {
 							<Route path="/article" component={Article} />
 							<Route path="/article2" component={Article} />
 							<Route path="/login" component={Login} />
+							<Route path="/register" component={Register} />
 						</Switch>
 					</>
 				</Router> 
