@@ -8,6 +8,7 @@ import store from "../store"
 
 import Home from './Home/'
 import Article from './Article/'
+import Login from './accounts/Login/'
 
 import Header from './Header/'
 
@@ -22,6 +23,7 @@ class App extends Component {
 							<Route exact path="/" component={Home} />
 							<Route path="/article" component={Article} />
 							<Route path="/article2" component={Article} />
+							<Route path="/login" component={Login} />
 						</Switch>
 					</>
 				</Router> 
