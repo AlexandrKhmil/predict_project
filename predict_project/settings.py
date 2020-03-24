@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'predict_project.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases 
 
 '''
 DATABASES = {
@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'predict_db',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '', # CHANGE
         'HOST': '',
         'PORT': '',
         'OPTIONS': {
