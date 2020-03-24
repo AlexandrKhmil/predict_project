@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import store from "../store" 
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor } from "../store" 
 import { loadUser } from '../actions/accounts'
 
 // REACT-ALERT
@@ -37,21 +38,23 @@ class App extends Component {
 
 	render() { 
 		return (
-			<Provider store={store}> 
-				<AlertProvider template={AlertTemplate} {...alertOptions}>
-					<Router>
-						<>
-							<Header />
-							<Alerts />
-							<Switch>
-								<Route exact path="/" component={Home} />
-								<Route path="/article" component={Article} />
-								<Route path="/login" component={Login} />
-								<Route path="/register" component={Register} />
-							</Switch>
-						</>
-					</Router>
-				</AlertProvider> 
+			<Provider store={store}>  
+				{/* <PersistGate loading={null} persistor={persistor}> */}
+					<AlertProvider template={AlertTemplate} {...alertOptions}>
+						<Router>
+							<>
+								<Header />
+								<Alerts />
+								<Switch>
+									<Route exact path="/" component={Home} />
+									<Route path="/article" component={Article} />
+									<Route path="/login" component={Login} />
+									<Route path="/register" component={Register} />
+								</Switch>
+							</>
+						</Router>
+					</AlertProvider>   
+				{/* </PersistGate> */}
 			</Provider>
 		)
 	}
