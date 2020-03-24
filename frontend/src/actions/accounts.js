@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { returnErrors } from "./messages"
 
 import {
     USER_LOADED,
@@ -23,8 +24,14 @@ export const loadUser = () => (dispatch, getState) => {
                 payload: res.data,
             })
         })
-        .catch(err => {
-            console.log(err)
+        .catch(err => { 
+            dispatch(returnErrors(
+                err.response.data,
+                err.response.status,
+            )) 
+            dispatch({
+                type: AUTH_ERROR,
+            })
         })
 }
 
@@ -48,8 +55,14 @@ export const login = (username, password) => dispatch => {
                 payload: res.data,
             })
         })
-        .catch(err => {
-            console.log(err)
+        .catch(err => { 
+            dispatch(returnErrors(
+                err.response.data,
+                err.response.status,
+            ))
+            dispatch({
+                type: LOGIN_FAIL
+            })
         })
 }
 
@@ -74,7 +87,14 @@ export const register = ({ username, password, email }) => dispatch => {
             })
         })
         .catch(err => {
-            console.log(err)
+            console.log(err.response.data)
+            dispatch(returnErrors(
+                err.response.data,
+                err.response.status,
+            ))
+            dispatch({
+                type: REGISTER_FAIL,
+            })
         })
 }
 
@@ -91,7 +111,10 @@ export const logout = () => (dispatch, getState) => {
             })
         })
         .catch(err => {
-            console.log(err)
+            dispatch(returnErrors(
+                err.response.data,
+                err.response.status,
+            ))
         })
 }
 

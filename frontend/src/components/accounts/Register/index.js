@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { register } from '../../../actions/accounts'
 import { createMessage } from "../../../actions/messages";
@@ -16,7 +16,7 @@ class Register extends Component {
 
 	onSubmit = e => {
 		e.preventDefault()
-		const { register } = this.props
+		const { register, createMessage } = this.props
 		const { 
 			username, 
 			email, 
@@ -32,17 +32,22 @@ class Register extends Component {
 			} 
 			register(newUser)
 		} else {
-			console.log('password error')
+			createMessage({ passwordNotMatch: "Passwords do not match" })
 		}
 	}
 
 	render() {
+		const { isAuthenticated } = this.props
 		const {
 			username,
 			email,
 			password,
 			password2
 		} = this.state
+
+		if (isAuthenticated) {
+			return <Redirect to="/" />
+		}
 
 		return (
 			<div className="col-md-6 m-auto">
@@ -102,9 +107,6 @@ class Register extends Component {
 						</p> 
 					</form>
 				</div>
-				<button onClick={ () => this.props.createMessage({ passwordNotMatch: "Passwords do not match"})}>
-							qqq
-						</button>
 			</div>
 		)
 	}
