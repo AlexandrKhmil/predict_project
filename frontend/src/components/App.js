@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-import { store, persistor } from "../store" 
+import { store } from "../store" 
 import { loadUser } from '../actions/accounts'
 
 // REACT-ALERT
@@ -39,7 +38,6 @@ class App extends Component {
 	render() { 
 		return (
 			<Provider store={store}>  
-				{/* <PersistGate loading={null} persistor={persistor}> */}
 					<AlertProvider template={AlertTemplate} {...alertOptions}>
 						<Router>
 							<>
@@ -54,7 +52,6 @@ class App extends Component {
 							</>
 						</Router>
 					</AlertProvider>   
-				{/* </PersistGate> */}
 			</Provider>
 		)
 	}
