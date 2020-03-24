@@ -1,0 +1,14 @@
+asgiref
+cffi
+cryptography
+Django
+django-mysql
+django-rest-knox
+djangorestframework
+mysqlclient
+pip
+pycparser
+pytz
+setuptools
+six
+sqlparse
