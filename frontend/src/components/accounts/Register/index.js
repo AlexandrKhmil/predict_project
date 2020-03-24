@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { register } from '../../../actions/accounts'
+import { createMessage } from "../../../actions/messages";
 
 class Register extends Component {
 	state = {
@@ -98,9 +99,12 @@ class Register extends Component {
 						</div> 
 						<p>
 							Do you already have an account? <NavLink to="/login">Login</NavLink>
-						</p>
+						</p> 
 					</form>
 				</div>
+				<button onClick={ () => this.props.createMessage({ passwordNotMatch: "Passwords do not match"})}>
+							qqq
+						</button>
 			</div>
 		)
 	}
@@ -112,5 +116,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ register }
+	{ register, createMessage }
 )(Register)
